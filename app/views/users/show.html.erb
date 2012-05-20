@@ -1,4 +1,14 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<h1>My Profile</h1>
+<p><b>User:</b> <%= @user.name %></p>
+<p><b>Email:</b> <%= @user.email if @user.email %></p>
+<p><h3>Subscription</h3></p>
+<table>
+  <tr>
+    <th>Playlist</th>
+  </tr>
+<% @playlists.each do |playlist| %>
+  <tr> <td><input type="checkbox" id = <%= playlist.id %> /> <%=playlist.name%> </td></tr>
+<% end %>
+</table>
+<br />
+

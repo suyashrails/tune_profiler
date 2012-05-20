@@ -8,6 +8,15 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @user_playlists = UserPlaylist.all
+    @playlists = Playlist.all
+     respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @user_playlists}
+
+    end
+   
+
   end
 
 end

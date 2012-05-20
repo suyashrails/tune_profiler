@@ -1,4 +1,8 @@
 TuneProfiler::Application.routes.draw do
+  resources :user_playlists
+
+  resources :playlists
+
   authenticated :user do
     root :to => 'home#index'
   end

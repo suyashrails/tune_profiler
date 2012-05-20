@@ -1,0 +1,26 @@
+<h1>My Profile</h1>
+<p><b>User:</b> <%= @user.name %></p>
+<p><b>Email:</b> <%= @user.email if @user.email %></p>
+<p><h3>Subscription</h3></p>
+<table>
+  <tr>
+    <th>Playlist</th>
+  </tr>
+<% @playlists.each do |playlist| %>
+<tr> <td><input type="checkbox" id = <%= playlist.id %> /> <%=playlist.name%> </td></tr>
+<% end %>
+
+
+<% @user_playlists.each do |user_playlist| %>
+   <% @playlists.each do |playlist|%>
+      <% if (user_playlist.id == playlist.id)%>
+         <% Document.getelementbyid(playlist.id).checked = false %>
+     <% end %>
+   <% end %>
+<% end %>
+
+
+</table>
+
+<br />
+
