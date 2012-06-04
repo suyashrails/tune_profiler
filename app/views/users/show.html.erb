@@ -1,14 +1,51 @@
-<h1>My Profile</h1>
+<h2>My Profile</h2>
 <p><b>User:</b> <%= @user.name %></p>
 <p><b>Email:</b> <%= @user.email if @user.email %></p>
-<p><h3>Subscription</h3></p>
+<p><h3>Subscription Details</h3></p>
 <table>
   <tr>
-    <th>Playlist</th>
+    <th>Subscribed Playlists</th>
   </tr>
-<% @playlists.each do |playlist| %>
-  <tr> <td><input type="checkbox" id = <%= playlist.id %> /> <%=playlist.name%> </td></tr>
-<% end %>
 </table>
-<br />
-
+<table>
+      <% @playlists.each do |pl|%>
+           <% @flag = "false" %>
+              <% if (@user_playlists == nil) %>
+ 	      <tr> None </tr>
+	      <% end %>
+           <% @user_playlists.each do |usr_pl| %>
+              <% if(usr_pl.playlist_id == pl.id)%>
+                 <tr> <td><input type="checkbox" id= <%= pl.id %>/><%=pl.name %></td></tr>   
+              <% end %>   
+           <% end %>       
+      <% end %>
+</table>
+<table>
+<tr><%= link_to 'Unsubscribe'%><tr>
+</table>
+<table>
+  <tr>
+    <th>Available Playlists</th>
+  </tr>
+</table>
+<table>
+      <% @playlists.each do |pl|%>
+	<% if (pl == nil) %>
+	<tr><td> None</td></tr>
+        <% end %>
+           <% @flag = "false" %>
+           <% @user_playlists.each do |usr_pl| %>
+              <% if(usr_pl.playlist_id == pl.id)%>
+                 <% @flag = "true" %>   
+		 <% break %>
+              <% end %>   
+           <% end %>       
+              <% if (@flag == "false") %>
+                 <tr> <td><input type="checkbox" id =<%= pl.id %>/> <%= pl.name %></td></tr>        
+              <% end %>
+      <% end %>
+</table>
+<table>
+<tr><%= link_to 'Add to Subscription'%></tr>
+</table>
+ 

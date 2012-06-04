@@ -8,7 +8,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @user_playlists = UserPlaylist.all
+
+    @user_playlists = UserPlaylist.where(:user_id => @user.id) 
+   
     @playlists = Playlist.all
      respond_to do |format|
       format.html # show.html.erb
@@ -16,7 +18,10 @@ class UsersController < ApplicationController
 
     end
    
-
-  end
+ # def subscribe(@sel_playlist)
+  #   @usr_pl = UserPlaylist.new
+   #  @user = User.find (params[:id])
+    # UserPlaylist.add(@user.id, @sel_playlist)
+#  end
 
 end
