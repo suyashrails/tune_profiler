@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       format.json { render json: @user_playlists}
 
     end
-   end
+   
  # def subscribe(@sel_playlist)
   #   @usr_pl = UserPlaylist.new
    #  @user = User.find (params[:id])

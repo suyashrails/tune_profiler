@@ -19,7 +19,7 @@
 		      <!--<td><%= link_to 'Remove', usr_pl, confirm: 'Are you sure?', method: :delete %></td> -->
 	              <td><%= link_to 'Remove!', {:controller => "user_playlists", 
                        				  :action => "destroy", 
-			                          :id => usr_pl.id},
+			                          :user_playlist => usr_pl},
 			                          :method => :delete %></td>
                 </tr>
               <% end %>   
