@@ -1,0 +1,82 @@
+class UserRolesController < ApplicationController
+
+  def index
+    @user_roles = UsersRoles.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @user_roles }
+    end
+  end
+
+  # GET /playlists/1
+  # GET /playlists/1.json
+  def show
+    @user_roles = UserRoles.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @user_roles }
+    end
+  end
+
+  # GET /playlists/new
+  # GET /playlists/new.json
+  def new
+    @user_roles = UserRoles.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @user_roles }
+    end
+  end
+
+  # GET /playlists/1/edit
+  def edit
+    @user_roles = UserRoles.find(params[:id])
+  end
+
+  # POST /playlists
+  # POST /playlists.json
+  def create
+    @user_roles = UserRoles.new(params[:user_roles])
+
+    respond_to do |format|
+      if @user_roles.save
+        format.html { redirect_to @user_roles, notice: 'User-Role was successfully created.' }
+        format.json { render json: @user_roles, status: :created, location: @user_roles }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @user_roles.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /playlists/1
+  # PUT /playlists/1.json
+  def update
+    @user_roles = UserRoles.find(params[:id])
+
+    respond_to do |format|
+      if @user_roles.update_attributes(params[:user_roles])
+        format.html { redirect_to @user_roles, notice: 'User-Role was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @user_roles.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /playlists/1
+  # DELETE /playlists/1.json
+  def destroy
+    @user_roles = UserRoles.find(params[:id])
+    @user_roles.destroy
+
+    respond_to do |format|
+      format.html { redirect_to user_roles_url }
+      format.json { head :no_content }
+    end
+  end
+end
