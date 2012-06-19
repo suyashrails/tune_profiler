@@ -76,8 +76,8 @@ class UserPlaylistsController < ApplicationController
     @user_playlist.destroy
 
    respond_to do |format|
-   #   format.html { redirect_to user_playlists_url }
-   #    format.html { notice: 'Your playlist was successfully removed.' }
+      format.html { redirect_to :back, notice: 'Playlist removed from user\'s profile' }
+   
    #   format.json { head :no_content }
    end
   end

@@ -1,6 +1,10 @@
 <h2>My Profile</h2>
 <p><b>User:</b> <%= @user.name %></p>
 <p><b>Email:</b> <%= @user.email if @user.email %></p>
+<p></p>
+
+<p><b>Admin Tasks</b></p>
+<% end %>
 <p><h3>Subscription Details</h3></p>
 <table>
   <tr>
@@ -15,17 +19,18 @@
 	      <% end %>
            <% @user_playlists.each do |usr_pl| %>
               <% if(usr_pl.playlist_id == pl.id)%>
-                 <tr> <td><%=pl.name %></td>
+                 <tr> <td><%=pl.name %></td><td></td><td></td><td></td><td></td>
 		      <!--<td><%= link_to 'Remove', usr_pl, confirm: 'Are you sure?', method: :delete %></td> -->
-	              <td><%= link_to 'Remove!', {:controller => "user_playlists", 
+	              <td><%= link_to 'x', {:controller => "user_playlists", 
                        				  :action => "destroy", 
-			                          :user_playlist => usr_pl},
+			                          :id => usr_pl.id},
 			                          :method => :delete %></td>
                 </tr>
               <% end %>   
            <% end %>       
       <% end %>
 </table>
+<p></p>
 <table>
   <tr>
     <th>Available Playlists</th>
@@ -45,11 +50,12 @@
            <% end %>       
               <% if (@flag == "false") %>
 		<% @user_pl = {:user_id=>@user.id, :playlist_id => pl.id} %>
-                 <tr> <td><%= pl.name %></td>
-		      <td><%= link_to 'Add it!', {:controller => "user_playlists", 
+                 <tr><td><%=pl.name %></td><td></td><td></td><td></td><td></td>
+		     <td><%= link_to '√', { :controller => "user_playlists", 
                        				  :action => "create", 
-			                          :user_playlist => @user_pl},
-			                          :method => :post %></td>
+			                          :user_playlist => @user_pl
+					    	},
+					      :method => :post %></td>
 		 </tr>
               <% end %>
       <% end %>

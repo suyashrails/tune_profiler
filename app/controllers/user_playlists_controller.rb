@@ -43,7 +43,7 @@ class UserPlaylistsController < ApplicationController
     @user_playlist = UserPlaylist.new(params[:user_playlist])
    respond_to do |format|
       if @user_playlist.save
-        format.html { redirect_to :back, notice: 'User playlist was successfully created.' }
+        format.html { redirect_to :back, notice: 'Playlist added to user\'s profile' }
         #format.json { render json: @user_playlist, status: :created, location: @user_playlist }
       else
         format.html { render action: "new" }
@@ -76,7 +76,7 @@ class UserPlaylistsController < ApplicationController
     @user_playlist.destroy
 
    respond_to do |format|
-      format.html { redirect_to :back, notice: 'Your playlist was successfully removed.' }
+      format.html { redirect_to :back, notice: 'Playlist removed from user\'s profile' }
    
    #   format.json { head :no_content }
    end

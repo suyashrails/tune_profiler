@@ -7,6 +7,8 @@ TuneProfiler::Application.routes.draw do
 
   resources :playlists
 
+  resources :users_roles
+
   authenticated :user do
     root :to => 'home#index'
   end

@@ -7,6 +7,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    
+   # @user_role = UsersRoles.where(:user_id => @user.id)
+     
     @user = User.find(params[:id])
 
     @user_playlists = UserPlaylist.where(:user_id => @user.id) 
