@@ -20,6 +20,14 @@ class UsersController < ApplicationController
       format.json { render json: @user_playlists}
 
     end
+
+  def profile
+     @user = User.find(params[:id])
+     @id = @user.id
+    #@id = current_user.name
+    redirect_to user_path(:id => @id) 
+  end
+
    end
  # def subscribe(@sel_playlist)
   #   @usr_pl = UserPlaylist.new

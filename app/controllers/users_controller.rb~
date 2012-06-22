@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     
-    @user_role = UsersRoles.where(:user_id => @user.id)
+   # @user_role = UsersRoles.where(:user_id => @user.id)
      
     @user = User.find(params[:id])
 
@@ -20,6 +20,12 @@ class UsersController < ApplicationController
       format.json { render json: @user_playlists}
 
     end
+
+  def profile
+    @id = current_user.name
+    redirect_to user_path(:id => @id) 
+  end
+
    end
  # def subscribe(@sel_playlist)
   #   @usr_pl = UserPlaylist.new

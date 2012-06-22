@@ -1,6 +1,6 @@
 <!--<h3>Home</h3>-->
 <% if user_signed_in? %>
-<h2>Welcome back <%= current_user.name %>!</h2>
+<h2>Welcome back <%= current_user.username %>!</h2>
 <% else %>
 <h2>Welcome to TuneTracer</h2>
 <% end %>
