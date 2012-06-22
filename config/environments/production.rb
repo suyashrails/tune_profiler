@@ -77,8 +77,8 @@ TuneProfiler::Application.configure do
     enable_starttls_auto: true,
     #user_name: ENV["GMAIL_USERNAME"],
     #password: ENV["GMAIL_PASSWORD"]
-    user_name: "afternoonwater2012",
-    password: "water2012"
+    user_name: "suyash.ps",
+    password: "taxi#911"
   }
 
 
