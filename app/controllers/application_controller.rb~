@@ -4,8 +4,22 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => exception.message
   end
 
+ before_filter :validate_user
+
+  private
+
+  def validate_user() #might need to pass id and current_user
+    if current_user.id == params[:id]
+      user_path # continue to current_user url
+    else
+        flash[:error] = "Please access one of your own pages"
+        root_path #redirect_to(:back)
+    end
+  end
+
+
 def after_sign_in_path_for(resource)
-  user_path(:id => current_user.name)
+  user_path(:id => current_user.slug)
 end
 
 

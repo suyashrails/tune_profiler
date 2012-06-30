@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
 
+
   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
     @users = User.all
@@ -10,8 +11,11 @@ class UsersController < ApplicationController
     
    # @user_role = UsersRoles.where(:user_id => @user.id)
      
+   #if current_user.has_role? :admin
     @user = User.find(params[:id])
-
+   #else
+   # @user = User.find(current_user.slug) #params[:id])
+   #end
     @user_playlists = UserPlaylist.where(:user_id => @user.id) 
    
     @playlists = Playlist.all
@@ -22,7 +26,7 @@ class UsersController < ApplicationController
     end
 
   def profile
-     @user = User.find(params[:id])
+     @user = User.find(current_user.slug) #params[:id])
      @id = @user.id
     #@id = current_user.name
     redirect_to user_path(:id => @id) 
